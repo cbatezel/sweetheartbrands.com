@@ -7,30 +7,43 @@
   <meta name="description" content="Private events, curated tastings, luxury transport, and unforgettable venues from Sweet Heart Brands.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --copper: #a0714f;
-      --copper-soft: #c49a6c;
-      --charcoal: #2a2622;
-      --earth: #4a423c;
-      --stone: #7a706a;
-      --pebble: #a89e96;
-      --sand: #d4cbc2;
-      --linen: #ece6df;
-      --cream: #f6f2ee;
-      --white: #fdfcfa;
+      --copper: #4a0e2b;
+      --copper-soft: #c9a84c;
+      --wine-light: #722040;
+      --gold-soft: #d4b96a;
+      --charcoal: #1a1118;
+      --earth: #2d1a24;
+      --stone: #8a7e86;
+      --pebble: #b0a8ac;
+      --sand: #d8cdd2;
+      --linen: #f0e8ec;
+      --cream: #faf7f8;
+      --white: #fefcfd;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Hanken Grotesk', sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
       background: var(--cream);
       color: var(--charcoal);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 300px;
+      background: linear-gradient(180deg, rgba(74,14,43,0.03) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .wrap {
@@ -47,45 +60,57 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      transition: all 0.4s ease;
     }
 
     .nav.scrolled {
-      background: rgba(246,242,238,0.92);
+      background: rgba(250,247,248,0.92);
       backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(74,14,43,0.06);
     }
 
     .nav-mark {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
       color: var(--copper);
       text-decoration: none;
     }
 
-    .nav-mark span { font-style: italic; color: var(--stone); }
+    .nav-mark span { font-style: italic; color: var(--copper-soft); }
 
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 
     .nav-links a {
-      font-weight: 400;
+      font-weight: 500;
       font-size: 0.65rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--pebble);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.3s;
     }
 
-    .nav-links a:hover { color: var(--copper); }
+    .nav-links a:hover { color: var(--copper-soft); }
 
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       min-height: 100svh;
-      background: var(--charcoal);
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--earth) 40%, #1a0a12 100%);
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.2fr 0.8fr;
       overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 70%, rgba(74,14,43,0.35) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .hero-text {
@@ -93,23 +118,28 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 4rem 4rem 5rem;
-      max-width: 580px;
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+      animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
     }
 
     .hero-eyebrow {
-      font-weight: 400;
+      font-weight: 500;
       font-size: 0.6rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--copper-soft);
       margin-bottom: 2rem;
+      border-left: 2px solid var(--copper-soft);
+      padding-left: 1rem;
     }
 
     .hero h1 {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
-      font-size: clamp(2.5rem, 5vw, 3.75rem);
-      line-height: 1.2;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      line-height: 1.1;
       color: var(--linen);
       margin-bottom: 1.75rem;
     }
@@ -132,14 +162,17 @@
       text-transform: uppercase;
       color: var(--charcoal);
       background: var(--copper-soft);
-      padding: 0.85rem 2rem;
+      padding: 0.9rem 2.2rem;
       text-decoration: none;
       display: inline-block;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       align-self: flex-start;
     }
 
-    .hero-cta:hover { background: var(--copper); }
+    .hero-cta:hover {
+      background: var(--gold-soft);
+      box-shadow: 0 0 30px rgba(201,168,76,0.25);
+    }
 
     .hero-right {
       background: linear-gradient(180deg, var(--earth) 0%, var(--charcoal) 100%);
@@ -149,21 +182,23 @@
       align-items: center;
       padding: 4rem 3rem;
       position: relative;
+      z-index: 1;
+      animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
     }
 
     .hero-right::before {
       content: '';
       position: absolute;
       inset: 3rem;
-      border: 1px solid rgba(160,113,79,0.08);
+      border: 1px solid rgba(201,168,76,0.1);
     }
 
     .hero-stat-group { text-align: center; }
 
     .hero-stat-big {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
-      font-size: 4rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 5rem;
       color: var(--copper-soft);
       line-height: 1;
       margin-bottom: 0.5rem;
@@ -177,12 +212,36 @@
 
     .hero-stat-divider {
       width: 40px; height: 1px;
-      background: rgba(160,113,79,0.2);
+      background: rgba(201,168,76,0.25);
       margin: 2rem auto;
     }
 
+    /* ===== ANIMATIONS ===== */
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
     /* ===== SERVICES ===== */
-    .services { padding: 7rem 0; }
+    .services { padding: 8rem 0; }
 
     .services-top {
       display: grid;
@@ -197,14 +256,24 @@
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--copper);
+      color: var(--copper-soft);
       margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .kicker::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--copper-soft);
     }
 
     .services-title {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
-      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 2.75rem;
       line-height: 1.2;
     }
 
@@ -221,24 +290,41 @@
     .service-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 3rem 3rem;
+      gap: 2rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+      border: 1px solid var(--sand);
+      transition: all 0.35s ease;
+    }
+
+    .service-card:hover {
+      border-color: var(--copper-soft);
+      background: var(--white);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(74,14,43,0.06);
     }
 
     .service-num {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.5rem;
-      color: var(--sand);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--copper-soft);
       margin-bottom: 0.75rem;
     }
 
     .service-name {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
-      font-size: 1.05rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
       color: var(--charcoal);
       margin-bottom: 0.5rem;
+      transition: color 0.3s;
     }
+
+    .service-card:hover .service-name { color: var(--copper); }
 
     .service-desc {
       font-weight: 300;
@@ -250,7 +336,8 @@
     /* ===== VENUES ===== */
     .venues {
       background: var(--white);
-      padding: 6rem 0;
+      padding: 7rem 0;
+      border-top: 1px solid var(--sand);
     }
 
     .venue-pair {
@@ -260,19 +347,36 @@
       margin-top: 3rem;
     }
 
+    .venue-card {
+      padding: 2.5rem;
+      border: 1px solid var(--sand);
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .venue-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--copper) 0%, var(--copper-soft) 100%);
+    }
+
+    .venue-card:hover { border-color: var(--copper-soft); }
+
     .venue-type {
       font-weight: 500;
       font-size: 0.55rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--copper);
+      color: var(--copper-soft);
       margin-bottom: 0.75rem;
     }
 
     .venue-name {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
-      font-size: 1.65rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.85rem;
       color: var(--charcoal);
       margin-bottom: 0.25rem;
     }
@@ -293,7 +397,7 @@
 
     /* ===== TRANSPORT ===== */
     .transport {
-      background: var(--charcoal);
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--earth) 100%);
       padding: 6rem 0;
       color: var(--linen);
     }
@@ -306,8 +410,8 @@
     }
 
     .transport-title {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
       font-size: 2.25rem;
       line-height: 1.2;
       color: var(--linen);
@@ -341,7 +445,7 @@
     }
 
     .transport-features li + li {
-      border-top: 1px solid rgba(160,113,79,0.1);
+      border-top: 1px solid rgba(201,168,76,0.1);
     }
 
     .transport-features li::before {
@@ -357,9 +461,12 @@
 
     .transport-spec {
       padding: 1.5rem;
-      border: 1px solid rgba(160,113,79,0.1);
+      border: 1px solid rgba(201,168,76,0.15);
       margin-bottom: 1rem;
+      transition: border-color 0.3s;
     }
+
+    .transport-spec:hover { border-color: rgba(201,168,76,0.4); }
 
     .transport-spec-label {
       font-weight: 500;
@@ -371,7 +478,7 @@
     }
 
     .transport-spec-value {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       color: var(--linen);
     }
@@ -387,8 +494,8 @@
     }
 
     .contact-title {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 400;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       line-height: 1.25;
       color: var(--charcoal);
@@ -408,17 +515,20 @@
     .contact-right { text-align: right; }
 
     .contact-email {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       color: var(--copper);
       text-decoration: none;
-      border-bottom: 1px solid rgba(160,113,79,0.2);
+      border-bottom: 1px solid rgba(74,14,43,0.25);
       padding-bottom: 3px;
-      transition: border-color 0.2s;
+      transition: all 0.3s;
     }
 
-    .contact-email:hover { border-color: var(--copper); }
+    .contact-email:hover {
+      color: var(--wine-light);
+      border-color: var(--copper);
+    }
 
     .contact-note {
       font-weight: 300;
@@ -440,7 +550,7 @@
     }
 
     .footer-left {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 0.8rem;
       color: var(--pebble);
     }
@@ -451,8 +561,8 @@
       color: var(--sand);
     }
 
-    .footer-right a { color: var(--pebble); text-decoration: none; }
-    .footer-right a:hover { color: var(--copper); }
+    .footer-right a { color: var(--pebble); text-decoration: none; transition: color 0.3s; }
+    .footer-right a:hover { color: var(--copper-soft); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
@@ -461,13 +571,16 @@
       .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-text { padding: 7rem 1.5rem 3rem; max-width: 100%; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
       .hero-right { padding: 3rem 1.5rem; }
       .hero-right::before { inset: 1.5rem; }
       .services { padding: 5rem 0; }
       .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
-      .service-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .service-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .service-card { padding: 1.5rem; }
       .venues { padding: 4rem 0; }
-      .venue-pair { grid-template-columns: 1fr; gap: 2.5rem; }
+      .venue-pair { grid-template-columns: 1fr; gap: 2rem; }
+      .venue-card { padding: 1.75rem; }
       .transport { padding: 4rem 0; }
       .transport-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .transport-aside { padding-top: 0; }
@@ -518,7 +631,7 @@
 
   <section class="services" id="services">
     <div class="wrap">
-      <div class="services-top">
+      <div class="services-top reveal">
         <div>
           <div class="kicker">What We Do</div>
           <h2 class="services-title">Experiences built around <em>connection</em></h2>
@@ -526,32 +639,32 @@
         <p class="services-intro">Every event is designed around our core mission: creating experiences for people to connect. Whether it's a wine tasting for ten or a company celebration for hundreds.</p>
       </div>
       <div class="service-grid">
-        <div>
+        <div class="service-card reveal">
           <div class="service-num">01</div>
           <div class="service-name">Private Events</div>
           <p class="service-desc">Weddings, anniversaries, corporate events, and milestone celebrations with full food, beverage, and coordination.</p>
         </div>
-        <div>
+        <div class="service-card reveal reveal-delay-1">
           <div class="service-num">02</div>
           <div class="service-name">Curated Tastings</div>
           <p class="service-desc">Guided wine and cider tastings with the full portfolio. On-site or mobile for private groups and corporate outings.</p>
         </div>
-        <div>
+        <div class="service-card reveal reveal-delay-2">
           <div class="service-num">03</div>
           <div class="service-name">Luxury Transport</div>
           <p class="service-desc">Mercedes Sprinter limo for wine tours, event shuttles, and VIP experiences throughout Northern Colorado.</p>
         </div>
-        <div>
+        <div class="service-card reveal reveal-delay-3">
           <div class="service-num">04</div>
           <div class="service-name">Wine Club Events</div>
           <p class="service-desc">Member-only gatherings, release parties, and priority access events across all brands.</p>
         </div>
-        <div>
+        <div class="service-card reveal reveal-delay-4">
           <div class="service-num">05</div>
           <div class="service-name">Live Entertainment</div>
           <p class="service-desc">Concerts, seasonal festivals, and themed events. From acoustic sets to full production at our outdoor venues.</p>
         </div>
-        <div>
+        <div class="service-card reveal reveal-delay-5">
           <div class="service-num">06</div>
           <div class="service-name">Corporate &amp; Team</div>
           <p class="service-desc">Team building, offsites, client entertainment, holiday parties. Custom packages for any group size.</p>
@@ -564,13 +677,13 @@
     <div class="wrap">
       <div class="kicker">The Venues</div>
       <div class="venue-pair">
-        <div>
+        <div class="venue-card reveal">
           <div class="venue-type">Winery &amp; Event Center</div>
           <div class="venue-name">Sweet Heart Winery</div>
           <div class="venue-location">5500 W Highway 34, Loveland</div>
           <p class="venue-body">The flagship property. Tasting room, outdoor pavilion, event spaces, and mountain views at the base of the Rockies. Built for weddings, large events, and the kind of gatherings people talk about for years.</p>
         </div>
-        <div>
+        <div class="venue-card reveal reveal-delay-1">
           <div class="venue-type">Tasting Room &amp; Wine Bar</div>
           <div class="venue-name">Tesoro by Sweet Heart</div>
           <div class="venue-location">Old Town Fort Collins</div>
@@ -583,7 +696,7 @@
   <section class="transport" id="transport">
     <div class="wrap">
       <div class="transport-grid">
-        <div>
+        <div class="reveal">
           <div class="kicker" style="color: var(--copper-soft);">Premium Transport</div>
           <h2 class="transport-title">The Sweet Heart <em>Sprinter</em></h2>
           <p class="transport-body">A custom Mercedes Sprinter limo conversion for wine tours, event shuttles, and VIP experiences. Licensed, insured, and built for the kind of group experience that makes the day feel special before you even arrive.</p>
@@ -594,7 +707,7 @@
             <li>Licensed luxury limousine (Colorado PUC)</li>
           </ul>
         </div>
-        <div class="transport-aside">
+        <div class="transport-aside reveal reveal-delay-2">
           <div class="transport-spec">
             <div class="transport-spec-label">Vehicle</div>
             <div class="transport-spec-value">Mercedes Sprinter</div>
@@ -618,7 +731,7 @@
 
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="contact-grid">
+      <div class="contact-grid reveal">
         <div>
           <h2 class="contact-title">Let's plan<br>something <em>special</em></h2>
           <p class="contact-body">Whether you're planning a wedding, corporate event, wine tour, or private celebration, our team will work with you to create something people remember.</p>
@@ -641,8 +754,21 @@
   </footer>
 
   <script>
+    // Nav scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
   </script>
 
 </body>
