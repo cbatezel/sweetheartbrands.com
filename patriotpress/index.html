@@ -153,21 +153,19 @@
       background: var(--red);
       padding: 1.15rem 0;
       overflow: hidden;
-      position: relative;
     }
 
     .band-track {
-      display: flex;
-      width: fit-content;
+      display: inline-flex;
+      white-space: nowrap;
       animation: ticker 18s linear infinite;
     }
 
     .band-set {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 2.5rem;
       padding-right: 2.5rem;
-      flex-shrink: 0;
     }
 
     .band-text {
@@ -189,8 +187,8 @@
     }
 
     @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -515,6 +513,7 @@
       .nav-links { display: none; }
       .hero { padding: 0 1.5rem 3rem; max-width: 100%; }
       .band-set { gap: 1.5rem; padding-right: 1.5rem; }
+      .band-track { animation-duration: 12s; }
       .story { padding: 5rem 0; }
       .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .cause-top { grid-template-columns: 1fr; gap: 2rem; }
