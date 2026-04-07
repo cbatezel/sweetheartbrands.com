@@ -7,43 +7,32 @@
   <meta name="description" content="Private events, curated tastings, luxury transport, and unforgettable venues from Sweet Heart Brands.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --copper: #4a0e2b;
-      --copper-soft: #c9a84c;
-      --wine-light: #722040;
-      --gold-soft: #d4b96a;
-      --charcoal: #1a1118;
-      --earth: #2d1a24;
-      --stone: #8a7e86;
-      --pebble: #b0a8ac;
-      --sand: #d8cdd2;
-      --linen: #f0e8ec;
-      --cream: #faf7f8;
-      --white: #fefcfd;
+      --navy: #1a1f2e;
+      --navy-mid: #2a3042;
+      --ink: #0f1219;
+      --slate: #5a6178;
+      --silver: #8b90a0;
+      --mist: #c8cad2;
+      --pearl: #f0f0f2;
+      --snow: #f8f8fa;
+      --white: #ffffff;
+      --gold: #b8963e;
+      --gold-light: #d4b468;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      background: var(--cream);
-      color: var(--charcoal);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      background: var(--snow);
+      color: var(--navy);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 300px;
-      background: linear-gradient(180deg, rgba(74,14,43,0.03) 0%, transparent 100%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     .wrap {
@@ -56,376 +45,288 @@
     .nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.5rem 3rem;
+      padding: 1.75rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      transition: all 0.4s ease;
+      transition: all 0.35s ease;
     }
 
     .nav.scrolled {
-      background: rgba(250,247,248,0.92);
+      background: rgba(248,248,250,0.95);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(74,14,43,0.06);
+      box-shadow: 0 1px 0 var(--mist);
     }
 
     .nav-mark {
-      font-family: 'Playfair Display', serif;
+      font-family: 'DM Serif Display', serif;
       font-weight: 400;
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
-      color: var(--copper);
+      font-size: 1.15rem;
+      color: var(--gold);
       text-decoration: none;
     }
 
-    .nav-mark span { font-style: italic; color: var(--copper-soft); }
+    .nav-mark span { font-style: italic; color: var(--silver); }
 
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 
     .nav-links a {
       font-weight: 500;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--pebble);
+      color: var(--silver);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: color 0.25s;
     }
 
-    .nav-links a:hover { color: var(--copper-soft); }
+    .nav-links a:hover { color: var(--gold); }
 
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       min-height: 100svh;
-      background: linear-gradient(135deg, var(--charcoal) 0%, var(--earth) 40%, #1a0a12 100%);
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 30% 70%, rgba(74,14,43,0.35) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 4rem 4rem 5rem;
-      max-width: 620px;
-      position: relative;
-      z-index: 1;
-      animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-    }
-
-    .hero-eyebrow {
-      font-weight: 500;
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--copper-soft);
-      margin-bottom: 2rem;
-      border-left: 2px solid var(--copper-soft);
-      padding-left: 1rem;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(3rem, 6vw, 4.5rem);
-      line-height: 1.1;
-      color: var(--linen);
-      margin-bottom: 1.75rem;
-    }
-
-    .hero h1 em { font-style: italic; color: var(--copper-soft); }
-
-    .hero-desc {
-      font-weight: 300;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--pebble);
-      max-width: 400px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-cta {
-      font-weight: 500;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--charcoal);
-      background: var(--copper-soft);
-      padding: 0.9rem 2.2rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s ease;
-      align-self: flex-start;
-    }
-
-    .hero-cta:hover {
-      background: var(--gold-soft);
-      box-shadow: 0 0 30px rgba(201,168,76,0.25);
-    }
-
-    .hero-right {
-      background: linear-gradient(180deg, var(--earth) 0%, var(--charcoal) 100%);
+      background: var(--navy);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 4rem 3rem;
-      position: relative;
-      z-index: 1;
-      animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      text-align: center;
+      padding: 6rem 2rem;
     }
 
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 3rem;
-      border: 1px solid rgba(201,168,76,0.1);
+    .hero-content {
+      max-width: 700px;
     }
 
-    .hero-stat-group { text-align: center; }
+    .hero-eyebrow {
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 2.5rem;
+    }
 
-    .hero-stat-big {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 5rem;
-      color: var(--copper-soft);
-      line-height: 1;
-      margin-bottom: 0.5rem;
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-weight: 300;
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--silver);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+
+    .cta:hover { background: var(--gold-light); }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(184, 150, 62, 0.15);
+    }
+
+    .hero-stat { text-align: center; }
+
+    .hero-stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
     }
 
     .hero-stat-label {
-      font-weight: 300;
-      font-size: 0.8rem;
-      color: var(--pebble);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
     }
 
     .hero-stat-divider {
-      width: 40px; height: 1px;
-      background: rgba(201,168,76,0.25);
-      margin: 2rem auto;
+      width: 1px;
+      height: 28px;
+      background: rgba(184, 150, 62, 0.2);
     }
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes heroFadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
 
     /* ===== SERVICES ===== */
-    .services { padding: 8rem 0; }
+    .services {
+      background: var(--pearl);
+      padding: 8rem 0;
+    }
 
-    .services-top {
-      display: grid;
-      grid-template-columns: 4fr 6fr;
-      gap: 4rem;
-      margin-bottom: 4.5rem;
-      align-items: end;
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
     }
 
     .kicker {
-      font-weight: 500;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--copper-soft);
-      margin-bottom: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .kicker::after {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--copper-soft);
-    }
-
-    .services-title {
-      font-family: 'Playfair Display', serif;
       font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
       font-size: 2.75rem;
       line-height: 1.2;
+      margin-bottom: 1.25rem;
     }
 
-    .services-title em { font-style: italic; color: var(--copper); }
+    .section-title em { font-style: italic; color: var(--gold); }
 
-    .services-intro {
+    .section-intro {
       font-weight: 300;
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--stone);
-      max-width: 460px;
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--slate);
+      max-width: 580px;
+      margin: 0 auto;
     }
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
     }
 
     .service-card {
-      padding: 2rem;
-      border: 1px solid var(--sand);
-      transition: all 0.35s ease;
-    }
-
-    .service-card:hover {
-      border-color: var(--copper-soft);
       background: var(--white);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(74,14,43,0.06);
-    }
-
-    .service-num {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--copper-soft);
-      margin-bottom: 0.75rem;
+      padding: 2.5rem;
+      border-top: 2px solid var(--gold);
     }
 
     .service-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.15rem;
-      color: var(--charcoal);
-      margin-bottom: 0.5rem;
-      transition: color 0.3s;
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
     }
-
-    .service-card:hover .service-name { color: var(--copper); }
 
     .service-desc {
       font-weight: 300;
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: var(--stone);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--slate);
     }
 
     /* ===== VENUES ===== */
     .venues {
-      background: var(--white);
-      padding: 7rem 0;
-      border-top: 1px solid var(--sand);
+      background: var(--snow);
+      padding: 8rem 0;
     }
 
     .venue-pair {
       display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 4rem;
-      margin-top: 3rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
     }
 
     .venue-card {
-      padding: 2.5rem;
-      border: 1px solid var(--sand);
-      position: relative;
-      transition: border-color 0.3s;
+      background: var(--white);
+      padding: 3rem;
+      border: 1px solid var(--mist);
     }
-
-    .venue-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: linear-gradient(180deg, var(--copper) 0%, var(--copper-soft) 100%);
-    }
-
-    .venue-card:hover { border-color: var(--copper-soft); }
 
     .venue-type {
-      font-weight: 500;
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--copper-soft);
-      margin-bottom: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
     }
 
     .venue-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.85rem;
-      color: var(--charcoal);
-      margin-bottom: 0.25rem;
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: 1.75rem;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
     }
 
     .venue-location {
-      font-weight: 300;
-      font-size: 0.85rem;
-      color: var(--pebble);
-      margin-bottom: 1.25rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--silver);
+      margin-bottom: 1.5rem;
     }
 
     .venue-body {
       font-weight: 300;
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--stone);
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--slate);
     }
 
     /* ===== TRANSPORT ===== */
     .transport {
-      background: linear-gradient(135deg, var(--charcoal) 0%, var(--earth) 100%);
-      padding: 6rem 0;
-      color: var(--linen);
+      background: var(--navy);
+      padding: 8rem 0;
+      color: var(--pearl);
     }
 
     .transport-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: start;
     }
 
     .transport-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 2.25rem;
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: 2.5rem;
       line-height: 1.2;
-      color: var(--linen);
+      color: var(--white);
       margin-bottom: 1.5rem;
     }
 
-    .transport-title em { font-style: italic; color: var(--copper-soft); }
+    .transport-title em { font-style: italic; color: var(--gold); }
 
     .transport-body {
       font-weight: 300;
-      font-size: 0.95rem;
+      font-size: 1.0625rem;
       line-height: 1.8;
-      color: var(--pebble);
-      margin-bottom: 2rem;
+      color: var(--silver);
+      margin-bottom: 2.5rem;
       max-width: 480px;
     }
 
@@ -435,112 +336,103 @@
     }
 
     .transport-features li {
-      padding: 0.8rem 0;
-      font-weight: 300;
-      font-size: 0.9rem;
-      color: var(--pebble);
+      padding: 0.85rem 0;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--silver);
       display: flex;
       gap: 1rem;
       align-items: baseline;
     }
 
     .transport-features li + li {
-      border-top: 1px solid rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(184,150,62,0.1);
     }
 
     .transport-features li::before {
       content: '';
-      width: 4px; height: 4px;
-      background: var(--copper-soft);
+      width: 5px; height: 5px;
+      background: var(--gold);
       border-radius: 50%;
       flex-shrink: 0;
-      margin-top: 0.45rem;
+      margin-top: 0.4rem;
     }
 
-    .transport-aside { padding-top: 2rem; }
+    .transport-aside { padding-top: 1rem; }
 
     .transport-spec {
-      padding: 1.5rem;
-      border: 1px solid rgba(201,168,76,0.15);
+      padding: 1.75rem;
+      border: 1px solid rgba(184,150,62,0.12);
       margin-bottom: 1rem;
-      transition: border-color 0.3s;
     }
 
-    .transport-spec:hover { border-color: rgba(201,168,76,0.4); }
-
     .transport-spec-label {
-      font-weight: 500;
-      font-size: 0.5rem;
-      letter-spacing: 0.2em;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--copper-soft);
-      margin-bottom: 0.35rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
     }
 
     .transport-spec-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--linen);
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--white);
     }
 
     /* ===== CONTACT ===== */
-    .contact { padding: 6rem 0 7rem; }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
-      align-items: end;
+    .contact {
+      padding: 8rem 0;
+      text-align: center;
     }
 
     .contact-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       line-height: 1.25;
-      color: var(--charcoal);
-      margin-bottom: 1.25rem;
+      color: var(--navy);
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
     }
 
-    .contact-title em { font-style: italic; color: var(--copper); }
+    .contact-title em { font-style: italic; color: var(--gold); }
 
     .contact-body {
       font-weight: 300;
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--stone);
-      max-width: 420px;
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
     }
-
-    .contact-right { text-align: right; }
 
     .contact-email {
-      font-family: 'Playfair Display', serif;
+      display: inline-block;
+      font-family: 'DM Serif Display', serif;
       font-style: italic;
       font-size: 1.35rem;
-      color: var(--copper);
+      color: var(--gold);
       text-decoration: none;
-      border-bottom: 1px solid rgba(74,14,43,0.25);
-      padding-bottom: 3px;
-      transition: all 0.3s;
+      border-bottom: 1px solid rgba(184,150,62,0.3);
+      padding-bottom: 4px;
+      transition: border-color 0.25s;
     }
 
-    .contact-email:hover {
-      color: var(--wine-light);
-      border-color: var(--copper);
-    }
+    .contact-email:hover { border-color: var(--gold); }
 
     .contact-note {
-      font-weight: 300;
-      font-size: 0.75rem;
-      color: var(--pebble);
-      margin-top: 0.75rem;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--silver);
+      margin-top: 1rem;
     }
 
     /* ===== FOOTER ===== */
     .footer {
+      background: var(--ink);
       padding: 2.5rem 0;
-      border-top: 1px solid var(--sand);
     }
 
     .footer-inner {
@@ -550,43 +442,41 @@
     }
 
     .footer-left {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.8rem;
-      color: var(--pebble);
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.85rem;
+      color: var(--silver);
     }
 
     .footer-right {
-      font-weight: 300;
-      font-size: 0.75rem;
-      color: var(--sand);
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: var(--slate);
     }
 
-    .footer-right a { color: var(--pebble); text-decoration: none; transition: color 0.3s; }
-    .footer-right a:hover { color: var(--copper-soft); }
+    .footer-right a { color: var(--silver); text-decoration: none; transition: color 0.25s; }
+    .footer-right a:hover { color: var(--gold); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .wrap { padding: 0 1.5rem; }
       .nav { padding: 1.25rem 1.5rem; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-text { padding: 7rem 1.5rem 3rem; max-width: 100%; }
-      .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
-      .hero-right { padding: 3rem 1.5rem; }
-      .hero-right::before { inset: 1.5rem; }
+      .hero { padding: 5rem 1.5rem; }
+      .hero h1 { font-size: clamp(2.25rem, 7vw, 3rem); }
+      .hero-desc { font-size: 1rem; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; padding-top: 2rem; margin-top: 2.5rem; }
+      .hero-stat-divider { width: 28px; height: 1px; }
       .services { padding: 5rem 0; }
-      .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
+      .section-title { font-size: 2rem; }
       .service-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .service-card { padding: 1.5rem; }
-      .venues { padding: 4rem 0; }
-      .venue-pair { grid-template-columns: 1fr; gap: 2rem; }
-      .venue-card { padding: 1.75rem; }
-      .transport { padding: 4rem 0; }
-      .transport-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .service-card { padding: 2rem; }
+      .venues { padding: 5rem 0; }
+      .venue-pair { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem; }
+      .venue-card { padding: 2rem; }
+      .transport { padding: 5rem 0; }
+      .transport-grid { grid-template-columns: 1fr; gap: 3rem; }
       .transport-aside { padding-top: 0; }
-      .contact { padding: 4rem 0 5rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .contact-right { text-align: left; }
+      .contact { padding: 5rem 0; }
       .footer { padding: 2rem 0; }
       .footer-inner { flex-direction: column; gap: 0.5rem; }
     }
@@ -605,67 +495,59 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-text">
+    <div class="hero-content">
       <div class="hero-eyebrow">Sweet Heart Brands &middot; Northern Colorado</div>
-      <h1>Create moments<br>that <em>matter</em></h1>
+      <h1>Create moments that <em>matter</em></h1>
       <p class="hero-desc">Private events, curated tastings, luxury transport, and unforgettable venues. From intimate gatherings to large-scale celebrations.</p>
-      <a href="#contact" class="hero-cta">Plan Your Event</a>
-    </div>
-    <div class="hero-right">
-      <div class="hero-stat-group">
-        <div class="hero-stat-big">2</div>
-        <div class="hero-stat-label">Venues across Northern Colorado</div>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat-group">
-        <div class="hero-stat-big">5</div>
-        <div class="hero-stat-label">Brands in the portfolio</div>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat-group">
-        <div class="hero-stat-big">1</div>
-        <div class="hero-stat-label">Mission: connection</div>
+      <a href="#contact" class="cta">Plan Your Event</a>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">2</div>
+          <div class="hero-stat-label">Venues</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">5</div>
+          <div class="hero-stat-label">Brands</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">1</div>
+          <div class="hero-stat-label">Mission</div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="services" id="services">
     <div class="wrap">
-      <div class="services-top reveal">
-        <div>
-          <div class="kicker">What We Do</div>
-          <h2 class="services-title">Experiences built around <em>connection</em></h2>
-        </div>
-        <p class="services-intro">Every event is designed around our core mission: creating experiences for people to connect. Whether it's a wine tasting for ten or a company celebration for hundreds.</p>
+      <div class="section-header">
+        <div class="kicker">What We Do</div>
+        <h2 class="section-title">Experiences built around <em>connection</em></h2>
+        <p class="section-intro">Every event is designed around our core mission: creating experiences for people to connect. Whether it's a wine tasting for ten or a company celebration for hundreds.</p>
       </div>
       <div class="service-grid">
-        <div class="service-card reveal">
-          <div class="service-num">01</div>
+        <div class="service-card">
           <div class="service-name">Private Events</div>
           <p class="service-desc">Weddings, anniversaries, corporate events, and milestone celebrations with full food, beverage, and coordination.</p>
         </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-num">02</div>
+        <div class="service-card">
           <div class="service-name">Curated Tastings</div>
           <p class="service-desc">Guided wine and cider tastings with the full portfolio. On-site or mobile for private groups and corporate outings.</p>
         </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-num">03</div>
+        <div class="service-card">
           <div class="service-name">Luxury Transport</div>
           <p class="service-desc">Mercedes Sprinter limo for wine tours, event shuttles, and VIP experiences throughout Northern Colorado.</p>
         </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-num">04</div>
+        <div class="service-card">
           <div class="service-name">Wine Club Events</div>
           <p class="service-desc">Member-only gatherings, release parties, and priority access events across all brands.</p>
         </div>
-        <div class="service-card reveal reveal-delay-4">
-          <div class="service-num">05</div>
+        <div class="service-card">
           <div class="service-name">Live Entertainment</div>
           <p class="service-desc">Concerts, seasonal festivals, and themed events. From acoustic sets to full production at our outdoor venues.</p>
         </div>
-        <div class="service-card reveal reveal-delay-5">
-          <div class="service-num">06</div>
+        <div class="service-card">
           <div class="service-name">Corporate &amp; Team</div>
           <p class="service-desc">Team building, offsites, client entertainment, holiday parties. Custom packages for any group size.</p>
         </div>
@@ -675,15 +557,17 @@
 
   <section class="venues" id="venues">
     <div class="wrap">
-      <div class="kicker">The Venues</div>
+      <div class="section-header">
+        <div class="kicker">The Venues</div>
+      </div>
       <div class="venue-pair">
-        <div class="venue-card reveal">
+        <div class="venue-card">
           <div class="venue-type">Winery &amp; Event Center</div>
           <div class="venue-name">Sweet Heart Winery</div>
           <div class="venue-location">5500 W Highway 34, Loveland</div>
           <p class="venue-body">The flagship property. Tasting room, outdoor pavilion, event spaces, and mountain views at the base of the Rockies. Built for weddings, large events, and the kind of gatherings people talk about for years.</p>
         </div>
-        <div class="venue-card reveal reveal-delay-1">
+        <div class="venue-card">
           <div class="venue-type">Tasting Room &amp; Wine Bar</div>
           <div class="venue-name">Tesoro by Sweet Heart</div>
           <div class="venue-location">Old Town Fort Collins</div>
@@ -696,8 +580,8 @@
   <section class="transport" id="transport">
     <div class="wrap">
       <div class="transport-grid">
-        <div class="reveal">
-          <div class="kicker" style="color: var(--copper-soft);">Premium Transport</div>
+        <div>
+          <div class="kicker">Premium Transport</div>
           <h2 class="transport-title">The Sweet Heart <em>Sprinter</em></h2>
           <p class="transport-body">A custom Mercedes Sprinter limo conversion for wine tours, event shuttles, and VIP experiences. Licensed, insured, and built for the kind of group experience that makes the day feel special before you even arrive.</p>
           <ul class="transport-features">
@@ -707,7 +591,7 @@
             <li>Licensed luxury limousine (Colorado PUC)</li>
           </ul>
         </div>
-        <div class="transport-aside reveal reveal-delay-2">
+        <div class="transport-aside">
           <div class="transport-spec">
             <div class="transport-spec-label">Vehicle</div>
             <div class="transport-spec-value">Mercedes Sprinter</div>
@@ -731,16 +615,10 @@
 
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="contact-grid reveal">
-        <div>
-          <h2 class="contact-title">Let's plan<br>something <em>special</em></h2>
-          <p class="contact-body">Whether you're planning a wedding, corporate event, wine tour, or private celebration, our team will work with you to create something people remember.</p>
-        </div>
-        <div class="contact-right">
-          <a href="mailto:events@sweetheartwinery.com" class="contact-email">events@sweetheartwinery.com</a>
-          <p class="contact-note">We typically respond within one business day.</p>
-        </div>
-      </div>
+      <h2 class="contact-title">Let's plan something <em>special</em></h2>
+      <p class="contact-body">Whether you're planning a wedding, corporate event, wine tour, or private celebration, our team will work with you to create something people remember.</p>
+      <a href="mailto:events@sweetheartwinery.com" class="contact-email">events@sweetheartwinery.com</a>
+      <p class="contact-note">We typically respond within one business day.</p>
     </div>
   </section>
 
@@ -754,21 +632,8 @@
   </footer>
 
   <script>
-    // Nav scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-    reveals.forEach(el => observer.observe(el));
   </script>
 
 </body>
