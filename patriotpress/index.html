@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patriot Press — American Hard Cider</title>
+  <meta name="description" content="Premium American hard cider with purpose. Crafted for those who build, serve, and protect.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0f13'/%3E%3Cpath d='M16 5l3.1 6.3 7 1-5 4.9 1.2 6.9L16 20.8l-6.3 3.3 1.2-6.9-5-4.9 7-1z' fill='%23c23038'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0c0f13;
+      --slate: #161b24;
+      --steel: #2a3140;
+      --iron: #4a5568;
+      --ash: #8892a0;
+      --fog: #b8c0cc;
+      --bone: #e8e4de;
+      --red: #c23038;
+      --red-dark: #912028;
+      --cream: #f2eeea;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', serif;
+      background: var(--ink);
+      color: var(--bone);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      mix-blend-mode: difference;
+    }
+
+    .nav-mark {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bone);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ash);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--bone); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-content: end;
+      padding: 0 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -20%;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(200deg, rgba(194, 48, 56, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-headline {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(4rem, 11vw, 8.5rem);
+      line-height: 0.88;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      color: var(--bone);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-headline .outline {
+      -webkit-text-stroke: 1.5px var(--bone);
+      color: transparent;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 3rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ash);
+      max-width: 340px;
+      line-height: 1.55;
+    }
+
+    .hero-scroll {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--iron);
+    }
+
+    /* ===== RED BAND / TICKER ===== */
+    .band {
+      background: var(--red);
+      padding: 1.15rem 0;
+      overflow: hidden;
+    }
+
+    .band-inner {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      width: max-content;
+      animation: ticker 20s linear infinite;
+    }
+
+    .band-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+
+    .band-sep {
+      width: 3px;
+      height: 3px;
+      background: var(--cream);
+      border-radius: 50%;
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .band-inner { animation: none; }
+    }
+
+    /* ===== STORY ===== */
+    .story {
+      padding: 8rem 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .story-lead {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.5;
+      color: var(--bone);
+    }
+
+    .story-lead strong {
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .story-body p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--ash);
+      margin-bottom: 1.5rem;
+    }
+
+    .story-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--iron);
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--steel);
+      display: inline-block;
+    }
+
+    /* ===== CAUSE ===== */
+    .cause {
+      padding: 0 0 8rem;
+    }
+
+    .cause-top {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 5rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .cause-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    .cause-statement {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--bone);
+    }
+
+    .cause-statement span { color: var(--red); }
+
+    .cause-intro {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ash);
+      max-width: 440px;
+    }
+
+    .cause-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .cause-col h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fog);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--steel);
+      display: inline-block;
+    }
+
+    .cause-col p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--ash);
+    }
+
+    /* ===== PRODUCT ===== */
+    .product {
+      background: var(--slate);
+      padding: 6rem 0;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 5fr 5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .product-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    .product-name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-sub {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ash);
+      margin-bottom: 2rem;
+    }
+
+    .product-desc {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ash);
+      max-width: 420px;
+    }
+
+    .product-specs {
+      background: rgba(10, 15, 19, 0.4);
+      padding: 2rem;
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(42, 49, 64, 0.6);
+      gap: 1.5rem;
+    }
+
+    .spec-row:last-child { border-bottom: none; }
+
+    .spec-key {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--iron);
+      padding-top: 0.15rem;
+    }
+
+    .spec-val {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--fog);
+    }
+
+    .product-bottom {
+      text-align: center;
+      padding: 4rem 0 0;
+    }
+
+    .product-bottom p {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--ash);
+      display: inline-block;
+      max-width: 420px;
+    }
+
+    /* ===== FIND ===== */
+    .find {
+      padding: 6rem 0 8rem;
+    }
+
+    .find-top {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 5rem;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+
+    .find-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    .find-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--iron);
+      text-align: right;
+    }
+
+    .find-list {
+      list-style: none;
+      max-width: 740px;
+    }
+
+    .find-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--steel);
+      gap: 2rem;
+    }
+
+    .find-item:first-child { border-top: 1px solid var(--steel); }
+
+    .find-name {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--bone);
+    }
+
+    .find-name small {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--ash);
+      margin-left: 0.75rem;
+    }
+
+    .find-type {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--iron);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--steel);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .footer-left {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--iron);
+    }
+
+    .footer-right {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: var(--iron);
+    }
+
+    .footer-right a {
+      color: var(--ash);
+      text-decoration: none;
+    }
+
+    .footer-right a:hover { color: var(--bone); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .wrap { padding: 0 1.5rem; }
+      .nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 0 1.5rem 3rem; max-width: 100%; }
+      .band-inner { gap: 1.5rem; }
+      .story { padding: 5rem 0; }
+      .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cause-top { grid-template-columns: 1fr; gap: 2rem; }
+      .cause-columns { grid-template-columns: 1fr; gap: 2rem; }
+      .cause { padding-bottom: 5rem; }
+      .product { padding: 4rem 0; }
+      .product-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .find { padding: 4rem 0 5rem; }
+      .find-top { grid-template-columns: 1fr; gap: 1rem; }
+      .find-note { text-align: left; }
+      .footer { padding: 2rem 0; }
+      .footer-inner { flex-direction: column; gap: 0.75rem; }
+    }
+
+    @media (max-width: 500px) {
+      .hero-bottom { grid-template-columns: 1fr; gap: 1.5rem; }
+      .spec-row { grid-template-columns: 100px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#" class="nav-mark">Patriot Press</a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#cause">Mission</a></li>
+      <li><a href="#product">Product</a></li>
+      <li><a href="#find">Find</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-headline">
+      <span class="outline">Flavored</span><br>
+      with<br>
+      Freedom.
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-tagline">Premium American hard cider, crafted for those who build, serve, and protect.</p>
+      <span class="hero-scroll">Scroll to explore</span>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="band-inner">
+      <span class="band-text">Gluten Free</span>
+      <span class="band-sep"></span>
+      <span class="band-text">Colorado Crafted</span>
+      <span class="band-sep"></span>
+      <span class="band-text">Purpose Driven</span>
+      <span class="band-sep"></span>
+      <span class="band-text">100+ Wholesale Accounts</span>
+      <span class="band-sep"></span>
+      <span class="band-text">This Can Saves Lives</span>
+      <span class="band-sep"></span>
+      <span class="band-text">Gluten Free</span>
+      <span class="band-sep"></span>
+      <span class="band-text">Colorado Crafted</span>
+      <span class="band-sep"></span>
+      <span class="band-text">Purpose Driven</span>
+      <span class="band-sep"></span>
+      <span class="band-text">100+ Wholesale Accounts</span>
+      <span class="band-sep"></span>
+      <span class="band-text">This Can Saves Lives</span>
+    </div>
+  </div>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="story-grid">
+        <div class="story-lead">
+          <strong>Patriot Press</strong> was built to honor the people who keep this country moving. Not as a slogan. As a product, a brand, and an ongoing commitment.
+        </div>
+        <div class="story-body">
+          <p>This brand sits at the intersection of blue-collar identity, real patriotism, and cause-driven consumption. It exists to serve a massive underserved emotional space in the alcohol market: the people who want to feel proud of what they drink.</p>
+          <p>Every can contributes directly to veterans organizations, first responder support groups, and blue-collar worker initiatives. That's not a marketing line. It's the reason this brand exists.</p>
+          <div class="story-meta">Loveland, Colorado &nbsp;&mdash;&nbsp; Sweet Heart Brands Portfolio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cause" id="cause">
+    <div class="wrap">
+      <div class="cause-top">
+        <div>
+          <div class="cause-label">The Mission</div>
+          <h2 class="cause-statement">Every can stands for something <span>bigger than the drink.</span></h2>
+        </div>
+        <p class="cause-intro">Patriot Press supports veterans, first responders, and blue-collar workers through direct contributions to organizations doing real work. Consumption tied to impact, not just taste.</p>
+      </div>
+      <div class="cause-columns">
+        <div class="cause-col">
+          <h3>Veterans &amp; Service</h3>
+          <p>Direct support for organizations like Combat Recovery Foundation. Research, treatment, family aid. The people who gave everything deserve more than a thank you.</p>
+        </div>
+        <div class="cause-col">
+          <h3>First Responders</h3>
+          <p>Mental health, recovery, and family support programs for firefighters, EMTs, and law enforcement. The ones who show up when nobody else will.</p>
+        </div>
+        <div class="cause-col">
+          <h3>Blue-Collar Workers</h3>
+          <p>Honoring tradesmen, builders, and the people who form the backbone of everything. Through initiatives that matter, not gestures that don't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product" id="product">
+    <div class="wrap">
+      <div class="product-grid">
+        <div>
+          <div class="product-label">Flagship</div>
+          <h2 class="product-name">Salted<br>Lime</h2>
+          <p class="product-sub">Fresh lime with Celtic sea salt</p>
+          <p class="product-desc">Crisp, clean, lime forward with a subtle sea salt finish. Sessionable, refreshing, and unlike anything else in the category.</p>
+        </div>
+        <div class="product-specs">
+          <div class="spec-row">
+            <span class="spec-key">Style</span>
+            <span class="spec-val">American Hard Cider</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Flavor</span>
+            <span class="spec-val">Fresh Lime + Celtic Sea Salt</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Gluten</span>
+            <span class="spec-val">Free</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Format</span>
+            <span class="spec-val">12 oz can, draft</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Profile</span>
+            <span class="spec-val">Clean, crisp, not sweet</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Best For</span>
+            <span class="spec-val">BBQs, tailgates, taprooms, Tuesday</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-bottom">
+        <p>This is not just cider. It's cider with a cause.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="find" id="find">
+    <div class="wrap">
+      <div class="find-top">
+        <h2 class="find-title">Where to<br>Find It</h2>
+        <div class="find-note">Growing across Colorado<br>100+ accounts and expanding</div>
+      </div>
+      <ul class="find-list">
+        <li class="find-item">
+          <span class="find-name">Sweet Heart Winery <small>5500 W Hwy 34, Loveland</small></span>
+          <span class="find-type">Tasting Room</span>
+        </li>
+        <li class="find-item">
+          <span class="find-name">Tesoro by Sweet Heart <small>Old Town Fort Collins</small></span>
+          <span class="find-type">Tasting Room</span>
+        </li>
+        <li class="find-item">
+          <span class="find-name">Bars &amp; Restaurants <small>Across Colorado</small></span>
+          <span class="find-type">On Premise</span>
+        </li>
+        <li class="find-item">
+          <span class="find-name">Retail Liquor Stores <small>Northern Colorado + expanding</small></span>
+          <span class="find-type">Retail</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-left">Patriot Press American Hard Cider &copy; 2026</span>
+        <span class="footer-right">A <a href="https://sweetheartbrands.com">Sweet Heart Brands</a> company &mdash; Loveland, CO</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
