@@ -153,14 +153,21 @@
       background: var(--red);
       padding: 1.15rem 0;
       overflow: hidden;
+      position: relative;
     }
 
-    .band-inner {
+    .band-track {
+      display: flex;
+      width: fit-content;
+      animation: ticker 18s linear infinite;
+    }
+
+    .band-set {
       display: flex;
       align-items: center;
       gap: 2.5rem;
-      width: max-content;
-      animation: ticker 20s linear infinite;
+      padding-right: 2.5rem;
+      flex-shrink: 0;
     }
 
     .band-text {
@@ -187,7 +194,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .band-inner { animation: none; }
+      .band-track { animation: none; }
     }
 
     /* ===== STORY ===== */
@@ -507,7 +514,7 @@
       .nav { padding: 1.25rem 1.5rem; }
       .nav-links { display: none; }
       .hero { padding: 0 1.5rem 3rem; max-width: 100%; }
-      .band-inner { gap: 1.5rem; }
+      .band-set { gap: 1.5rem; padding-right: 1.5rem; }
       .story { padding: 5rem 0; }
       .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .cause-top { grid-template-columns: 1fr; gap: 2rem; }
@@ -553,26 +560,31 @@
   </section>
 
   <div class="band">
-    <div class="band-inner">
-      <span class="band-text">Gluten Free</span>
-      <span class="band-sep"></span>
-      <span class="band-text">Colorado Crafted</span>
-      <span class="band-sep"></span>
-      <span class="band-text">Purpose Driven</span>
-      <span class="band-sep"></span>
-      <span class="band-text">100+ Wholesale Accounts</span>
-      <span class="band-sep"></span>
-      <span class="band-text">This Can Saves Lives</span>
-      <span class="band-sep"></span>
-      <span class="band-text">Gluten Free</span>
-      <span class="band-sep"></span>
-      <span class="band-text">Colorado Crafted</span>
-      <span class="band-sep"></span>
-      <span class="band-text">Purpose Driven</span>
-      <span class="band-sep"></span>
-      <span class="band-text">100+ Wholesale Accounts</span>
-      <span class="band-sep"></span>
-      <span class="band-text">This Can Saves Lives</span>
+    <div class="band-track">
+      <div class="band-set">
+        <span class="band-text">Gluten Free</span>
+        <span class="band-sep"></span>
+        <span class="band-text">Colorado Crafted</span>
+        <span class="band-sep"></span>
+        <span class="band-text">Purpose Driven</span>
+        <span class="band-sep"></span>
+        <span class="band-text">100+ Wholesale Accounts</span>
+        <span class="band-sep"></span>
+        <span class="band-text">This Can Saves Lives</span>
+        <span class="band-sep"></span>
+      </div>
+      <div class="band-set">
+        <span class="band-text">Gluten Free</span>
+        <span class="band-sep"></span>
+        <span class="band-text">Colorado Crafted</span>
+        <span class="band-sep"></span>
+        <span class="band-text">Purpose Driven</span>
+        <span class="band-sep"></span>
+        <span class="band-text">100+ Wholesale Accounts</span>
+        <span class="band-sep"></span>
+        <span class="band-text">This Can Saves Lives</span>
+        <span class="band-sep"></span>
+      </div>
     </div>
   </div>
 
