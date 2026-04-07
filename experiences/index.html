@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Heart Experiences — Northern Colorado</title>
+  <meta name="description" content="Private events, curated tastings, luxury transport, and unforgettable venues from Sweet Heart Brands.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --copper: #a0714f;
+      --copper-soft: #c49a6c;
+      --charcoal: #2a2622;
+      --earth: #4a423c;
+      --stone: #7a706a;
+      --pebble: #a89e96;
+      --sand: #d4cbc2;
+      --linen: #ece6df;
+      --cream: #f6f2ee;
+      --white: #fdfcfa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav.scrolled {
+      background: rgba(246,242,238,0.92);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-mark {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--copper);
+      text-decoration: none;
+    }
+
+    .nav-mark span { font-style: italic; color: var(--stone); }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pebble);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--copper); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      background: var(--charcoal);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem 4rem 5rem;
+      max-width: 580px;
+    }
+
+    .hero-eyebrow {
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--copper-soft);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.2;
+      color: var(--linen);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--copper-soft); }
+
+    .hero-desc {
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--pebble);
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--copper-soft);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      align-self: flex-start;
+    }
+
+    .hero-cta:hover { background: var(--copper); }
+
+    .hero-right {
+      background: linear-gradient(180deg, var(--earth) 0%, var(--charcoal) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 3rem;
+      position: relative;
+    }
+
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 3rem;
+      border: 1px solid rgba(160,113,79,0.08);
+    }
+
+    .hero-stat-group { text-align: center; }
+
+    .hero-stat-big {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: 4rem;
+      color: var(--copper-soft);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-stat-label {
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: var(--pebble);
+    }
+
+    .hero-stat-divider {
+      width: 40px; height: 1px;
+      background: rgba(160,113,79,0.2);
+      margin: 2rem auto;
+    }
+
+    /* ===== SERVICES ===== */
+    .services { padding: 7rem 0; }
+
+    .services-top {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      gap: 4rem;
+      margin-bottom: 4.5rem;
+      align-items: end;
+    }
+
+    .kicker {
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1rem;
+    }
+
+    .services-title {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .services-title em { font-style: italic; color: var(--copper); }
+
+    .services-intro {
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--stone);
+      max-width: 460px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem 3rem;
+    }
+
+    .service-num {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--sand);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-name {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-weight: 300;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--stone);
+    }
+
+    /* ===== VENUES ===== */
+    .venues {
+      background: var(--white);
+      padding: 6rem 0;
+    }
+
+    .venue-pair {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .venue-type {
+      font-weight: 500;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 0.75rem;
+    }
+
+    .venue-name {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: 1.65rem;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .venue-location {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--pebble);
+      margin-bottom: 1.25rem;
+    }
+
+    .venue-body {
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--stone);
+    }
+
+    /* ===== TRANSPORT ===== */
+    .transport {
+      background: var(--charcoal);
+      padding: 6rem 0;
+      color: var(--linen);
+    }
+
+    .transport-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .transport-title {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: 2.25rem;
+      line-height: 1.2;
+      color: var(--linen);
+      margin-bottom: 1.5rem;
+    }
+
+    .transport-title em { font-style: italic; color: var(--copper-soft); }
+
+    .transport-body {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--pebble);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .transport-features {
+      list-style: none;
+      max-width: 420px;
+    }
+
+    .transport-features li {
+      padding: 0.8rem 0;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--pebble);
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .transport-features li + li {
+      border-top: 1px solid rgba(160,113,79,0.1);
+    }
+
+    .transport-features li::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--copper-soft);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    .transport-aside { padding-top: 2rem; }
+
+    .transport-spec {
+      padding: 1.5rem;
+      border: 1px solid rgba(160,113,79,0.1);
+      margin-bottom: 1rem;
+    }
+
+    .transport-spec-label {
+      font-weight: 500;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .transport-spec-value {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.1rem;
+      color: var(--linen);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact { padding: 6rem 0 7rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .contact-title {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      line-height: 1.25;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-title em { font-style: italic; color: var(--copper); }
+
+    .contact-body {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--stone);
+      max-width: 420px;
+    }
+
+    .contact-right { text-align: right; }
+
+    .contact-email {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--copper);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(160,113,79,0.2);
+      padding-bottom: 3px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email:hover { border-color: var(--copper); }
+
+    .contact-note {
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--pebble);
+      margin-top: 0.75rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--sand);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .footer-left {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.8rem;
+      color: var(--pebble);
+    }
+
+    .footer-right {
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--sand);
+    }
+
+    .footer-right a { color: var(--pebble); text-decoration: none; }
+    .footer-right a:hover { color: var(--copper); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .wrap { padding: 0 1.5rem; }
+      .nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { padding: 7rem 1.5rem 3rem; max-width: 100%; }
+      .hero-right { padding: 3rem 1.5rem; }
+      .hero-right::before { inset: 1.5rem; }
+      .services { padding: 5rem 0; }
+      .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
+      .service-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .venues { padding: 4rem 0; }
+      .venue-pair { grid-template-columns: 1fr; gap: 2.5rem; }
+      .transport { padding: 4rem 0; }
+      .transport-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .transport-aside { padding-top: 0; }
+      .contact { padding: 4rem 0 5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-right { text-align: left; }
+      .footer { padding: 2rem 0; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-mark">Sweet Heart <span>Experiences</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Events</a></li>
+      <li><a href="#venues">Venues</a></li>
+      <li><a href="#transport">Transport</a></li>
+      <li><a href="#contact">Inquire</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Sweet Heart Brands &middot; Northern Colorado</div>
+      <h1>Create moments<br>that <em>matter</em></h1>
+      <p class="hero-desc">Private events, curated tastings, luxury transport, and unforgettable venues. From intimate gatherings to large-scale celebrations.</p>
+      <a href="#contact" class="hero-cta">Plan Your Event</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-group">
+        <div class="hero-stat-big">2</div>
+        <div class="hero-stat-label">Venues across Northern Colorado</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-group">
+        <div class="hero-stat-big">5</div>
+        <div class="hero-stat-label">Brands in the portfolio</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-group">
+        <div class="hero-stat-big">1</div>
+        <div class="hero-stat-label">Mission: connection</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="services-top">
+        <div>
+          <div class="kicker">What We Do</div>
+          <h2 class="services-title">Experiences built around <em>connection</em></h2>
+        </div>
+        <p class="services-intro">Every event is designed around our core mission: creating experiences for people to connect. Whether it's a wine tasting for ten or a company celebration for hundreds.</p>
+      </div>
+      <div class="service-grid">
+        <div>
+          <div class="service-num">01</div>
+          <div class="service-name">Private Events</div>
+          <p class="service-desc">Weddings, anniversaries, corporate events, and milestone celebrations with full food, beverage, and coordination.</p>
+        </div>
+        <div>
+          <div class="service-num">02</div>
+          <div class="service-name">Curated Tastings</div>
+          <p class="service-desc">Guided wine and cider tastings with the full portfolio. On-site or mobile for private groups and corporate outings.</p>
+        </div>
+        <div>
+          <div class="service-num">03</div>
+          <div class="service-name">Luxury Transport</div>
+          <p class="service-desc">Mercedes Sprinter limo for wine tours, event shuttles, and VIP experiences throughout Northern Colorado.</p>
+        </div>
+        <div>
+          <div class="service-num">04</div>
+          <div class="service-name">Wine Club Events</div>
+          <p class="service-desc">Member-only gatherings, release parties, and priority access events across all brands.</p>
+        </div>
+        <div>
+          <div class="service-num">05</div>
+          <div class="service-name">Live Entertainment</div>
+          <p class="service-desc">Concerts, seasonal festivals, and themed events. From acoustic sets to full production at our outdoor venues.</p>
+        </div>
+        <div>
+          <div class="service-num">06</div>
+          <div class="service-name">Corporate &amp; Team</div>
+          <p class="service-desc">Team building, offsites, client entertainment, holiday parties. Custom packages for any group size.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="venues" id="venues">
+    <div class="wrap">
+      <div class="kicker">The Venues</div>
+      <div class="venue-pair">
+        <div>
+          <div class="venue-type">Winery &amp; Event Center</div>
+          <div class="venue-name">Sweet Heart Winery</div>
+          <div class="venue-location">5500 W Highway 34, Loveland</div>
+          <p class="venue-body">The flagship property. Tasting room, outdoor pavilion, event spaces, and mountain views at the base of the Rockies. Built for weddings, large events, and the kind of gatherings people talk about for years.</p>
+        </div>
+        <div>
+          <div class="venue-type">Tasting Room &amp; Wine Bar</div>
+          <div class="venue-name">Tesoro by Sweet Heart</div>
+          <div class="venue-location">Old Town Fort Collins</div>
+          <p class="venue-body">Intimate wine and tapas in the heart of Fort Collins. Private group tastings, small celebrations, and curated evenings with the full portfolio in a space built for exactly this.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="transport" id="transport">
+    <div class="wrap">
+      <div class="transport-grid">
+        <div>
+          <div class="kicker" style="color: var(--copper-soft);">Premium Transport</div>
+          <h2 class="transport-title">The Sweet Heart <em>Sprinter</em></h2>
+          <p class="transport-body">A custom Mercedes Sprinter limo conversion for wine tours, event shuttles, and VIP experiences. Licensed, insured, and built for the kind of group experience that makes the day feel special before you even arrive.</p>
+          <ul class="transport-features">
+            <li>BYOB policy for a true tasting tour experience</li>
+            <li>Premium interior with mounted entertainment</li>
+            <li>Available for private bookings and wine club events</li>
+            <li>Licensed luxury limousine (Colorado PUC)</li>
+          </ul>
+        </div>
+        <div class="transport-aside">
+          <div class="transport-spec">
+            <div class="transport-spec-label">Vehicle</div>
+            <div class="transport-spec-value">Mercedes Sprinter</div>
+          </div>
+          <div class="transport-spec">
+            <div class="transport-spec-label">Capacity</div>
+            <div class="transport-spec-value">8+ passengers</div>
+          </div>
+          <div class="transport-spec">
+            <div class="transport-spec-label">Coverage</div>
+            <div class="transport-spec-value">Northern Colorado</div>
+          </div>
+          <div class="transport-spec">
+            <div class="transport-spec-label">Licensing</div>
+            <div class="transport-spec-value">Colorado PUC LL Permit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-title">Let's plan<br>something <em>special</em></h2>
+          <p class="contact-body">Whether you're planning a wedding, corporate event, wine tour, or private celebration, our team will work with you to create something people remember.</p>
+        </div>
+        <div class="contact-right">
+          <a href="mailto:events@sweetheartwinery.com" class="contact-email">events@sweetheartwinery.com</a>
+          <p class="contact-note">We typically respond within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-left">Sweet Heart Experiences</span>
+        <span class="footer-right">A <a href="https://sweetheartbrands.com">Sweet Heart Brands</a> company &mdash; Loveland, CO</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+  </script>
+
+</body>
+</html>
