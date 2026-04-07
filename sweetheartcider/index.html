@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweetheart Cider — Crisp. Cute. Crush-Worthy.</title>
+  <meta name="description" content="Sweetheart Cider. Gluten-free, fruit-forward hard cider for every moment worth sharing.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 28S3 18.5 3 10.5C3 6.4 6.1 3 10 3c2.8 0 4.8 1.6 6 3.4C17.2 4.6 19.2 3 22 3c3.9 0 7 3.4 7 7.5C29 18.5 16 28 16 28z' fill='%23b5566a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #b5566a;
+      --rose-pale: #dba8b3;
+      --blush: #f0d5d0;
+      --peach: #f3ddd4;
+      --skin: #f7ebe5;
+      --cream: #faf6f3;
+      --white: #ffffff;
+      --warm: #6e5a56;
+      --warm-light: #9e8e89;
+      --warm-pale: #c4b6b0;
+      --text: #3d302c;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Karla', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 246, 243, 0.92);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-mark {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--rose);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(155deg, var(--cream) 0%, var(--skin) 30%, var(--blush) 60%, var(--peach) 80%, var(--cream) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 10%; right: -5%;
+      width: 45vw; height: 45vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(219,168,179,0.3) 0%, transparent 65%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1060px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 1;
+      color: var(--rose);
+    }
+
+    .hero-tagline-line2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-aside {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 3rem;
+    }
+
+    .hero-desc {
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--warm);
+      max-width: 380px;
+    }
+
+    .hero-meta { text-align: right; }
+
+    .hero-meta span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-light);
+      line-height: 2;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 7rem 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-left {
+      position: sticky;
+      top: 6rem;
+    }
+
+    .kicker {
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .about-title em { font-style: italic; color: var(--rose); }
+
+    .about-right p {
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--warm);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-right p:first-child::first-line {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ===== FLAVORS ===== */
+    .flavors {
+      background: var(--white);
+      padding: 6rem 0 7rem;
+    }
+
+    .flavors-top {
+      margin-bottom: 3rem;
+    }
+
+    .flavor-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .flavor {
+      padding: 2.5rem 0;
+    }
+
+    .flavor:first-child {
+      padding-right: 3rem;
+      border-right: 1px solid var(--blush);
+    }
+
+    .flavor:last-child {
+      padding-left: 3rem;
+    }
+
+    .flavor-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1.75rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .flavor-notes {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--rose);
+      margin-bottom: 1.25rem;
+    }
+
+    .flavor-body {
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--warm);
+      margin-bottom: 1rem;
+    }
+
+    .flavor-specs {
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--warm-pale);
+    }
+
+    /* ===== MOMENTS ===== */
+    .moments {
+      padding: 6rem 0;
+    }
+
+    .moments-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.5;
+      color: var(--text);
+      max-width: 680px;
+    }
+
+    .moments-text em { font-style: italic; color: var(--rose); }
+
+    /* ===== CAUSE ===== */
+    .cause {
+      background: linear-gradient(170deg, var(--skin) 0%, var(--cream) 100%);
+      padding: 5rem 0;
+    }
+
+    .cause-grid {
+      display: grid;
+      grid-template-columns: 5fr 5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .cause-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 2.25rem;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .cause-title em { font-style: italic; color: var(--rose); }
+
+    .cause-body {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--warm);
+    }
+
+    .cause-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .cause-item {
+      padding: 1.25rem 0;
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--warm);
+    }
+
+    .cause-item + .cause-item {
+      border-top: 1px solid var(--blush);
+    }
+
+    .cause-item strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ===== FIND ===== */
+    .find {
+      padding: 6rem 0 7rem;
+    }
+
+    .find-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      margin-bottom: 2.5rem;
+      gap: 2rem;
+    }
+
+    .find-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 2.25rem;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .find-title em { font-style: italic; color: var(--rose); }
+
+    .find-cta {
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--rose);
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .find-cta:hover { background: var(--rose-pale); color: var(--text); }
+
+    .find-list {
+      list-style: none;
+      max-width: 680px;
+    }
+
+    .find-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      padding: 1.15rem 0;
+      gap: 2rem;
+    }
+
+    .find-item + .find-item { border-top: 1px solid var(--blush); }
+    .find-item:first-child { border-top: 1px solid var(--blush); padding-top: 1.15rem; }
+    .find-item:last-child { border-bottom: 1px solid var(--blush); padding-bottom: 1.15rem; }
+
+    .find-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .find-name small {
+      font-family: 'Karla', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--warm-light);
+      margin-left: 0.75rem;
+    }
+
+    .find-type {
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-pale);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--blush);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .footer-left {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--warm-light);
+    }
+
+    .footer-right {
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--warm-pale);
+    }
+
+    .footer-right a { color: var(--warm-light); text-decoration: none; }
+    .footer-right a:hover { color: var(--rose); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .wrap { padding: 0 1.5rem; }
+      .nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero-aside { grid-template-columns: 1fr; }
+      .hero-meta { text-align: left; }
+      .about { padding: 5rem 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-left { position: static; }
+      .flavors { padding: 4rem 0 5rem; }
+      .flavor-pair { grid-template-columns: 1fr; }
+      .flavor:first-child { padding-right: 0; border-right: none; border-bottom: 1px solid var(--blush); }
+      .flavor:last-child { padding-left: 0; }
+      .moments { padding: 4rem 0; }
+      .cause { padding: 4rem 0; }
+      .cause-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .find { padding: 4rem 0 5rem; }
+      .find-top { grid-template-columns: 1fr; }
+      .footer { padding: 2rem 0; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-mark">Sweetheart Cider</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#flavors">Flavors</a></li>
+      <li><a href="#cause">Mission</a></li>
+      <li><a href="#find">Find</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-tagline">Crisp. Cute.</div>
+      <div class="hero-tagline-line2">Crush-Worthy.</div>
+      <div class="hero-aside">
+        <p class="hero-desc">Fruit-forward, gluten-free hard cider for every moment worth sharing. Handcrafted in Northern Colorado.</p>
+        <div class="hero-meta">
+          <span>Gluten Free</span>
+          <span>Fruit Forward</span>
+          <span>12oz Cans</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="kicker">The Brand</div>
+          <h2 class="about-title">Made for<br>the <em>moment</em></h2>
+        </div>
+        <div class="about-right">
+          <p>Sweetheart Cider is a lifestyle-driven beverage brand designed to create joyful, social, and memorable experiences. It's feminine, fun, and emotionally engaging, crafted not just as a drink, but as a moment to be shared.</p>
+          <p>Born from the Sweet Heart Brands family in Loveland, Colorado, Sweetheart fills a lane that most craft cider brands ignore: the social, lighthearted, emotionally driven drinking occasion. Girls' nights, patio moments, celebrations, and everyday indulgences.</p>
+          <p>It's an approachable, fun alternative to wine and seltzer. Flavor-forward, crushable, and designed for the kind of moments people actually post about.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flavors" id="flavors">
+    <div class="wrap">
+      <div class="flavors-top">
+        <div class="kicker">The Flavors</div>
+      </div>
+      <div class="flavor-pair">
+        <div class="flavor">
+          <div class="flavor-name">Pink Dragonfly</div>
+          <div class="flavor-notes">Dragonfruit &amp; Pear</div>
+          <p class="flavor-body">Tropical, floral, and perfectly light. The signature flavor that started it all. There's a reason it's the one people photograph first.</p>
+          <div class="flavor-specs">5.3% ABV &middot; Gluten Free &middot; 12oz</div>
+        </div>
+        <div class="flavor">
+          <div class="flavor-name">Strawberry Rhubarb Vanilla</div>
+          <div class="flavor-notes">Berry &amp; Warm Vanilla</div>
+          <p class="flavor-body">Sweet strawberry meets tart rhubarb with a smooth vanilla finish. Comfort and crisp in one sip. The one people don't expect to love this much.</p>
+          <div class="flavor-specs">5.8% ABV &middot; Gluten Free &middot; 12oz</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moments">
+    <div class="wrap">
+      <div class="kicker">The Moments</div>
+      <p class="moments-text">
+        Girls' night out, patio season, the birthday that actually matters, the <em>Tuesday you just survived</em>, the brunch that went long, the sunset nobody planned. That's where Sweetheart lives.
+      </p>
+    </div>
+  </section>
+
+  <section class="cause" id="cause">
+    <div class="wrap">
+      <div class="cause-grid">
+        <div>
+          <div class="kicker">The Mission</div>
+          <h2 class="cause-title">More than<br>a <em>pretty can</em></h2>
+          <p class="cause-body">Sweetheart Cider supports women-focused causes and organizations, because the brand only works if the community behind it does too.</p>
+        </div>
+        <div class="cause-items">
+          <div class="cause-item"><strong>Breast cancer awareness</strong> and treatment programs across Colorado</div>
+          <div class="cause-item"><strong>Domestic abuse support</strong> organizations providing direct aid and shelter</div>
+          <div class="cause-item"><strong>Women's health initiatives</strong> focused on care access and community education</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="find" id="find">
+    <div class="wrap">
+      <div class="find-top">
+        <h2 class="find-title">Grab a <em>Sweetheart</em></h2>
+        <a href="https://sweetheartwinery.com" class="find-cta">Visit the Winery</a>
+      </div>
+      <ul class="find-list">
+        <li class="find-item">
+          <span class="find-name">Sweet Heart Winery <small>Loveland, Colorado</small></span>
+          <span class="find-type">Tasting Room</span>
+        </li>
+        <li class="find-item">
+          <span class="find-name">Tesoro by Sweet Heart <small>Old Town Fort Collins</small></span>
+          <span class="find-type">Tasting Room</span>
+        </li>
+        <li class="find-item">
+          <span class="find-name">Bars &amp; Restaurants <small>Across Colorado</small></span>
+          <span class="find-type">On Premise</span>
+        </li>
+        <li class="find-item">
+          <span class="find-name">Retail &amp; Grocery <small>Liquor stores + expanding</small></span>
+          <span class="find-type">Retail</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-left">Sweetheart Cider&reg;</span>
+        <span class="footer-right">A <a href="https://sweetheartbrands.com">Sweet Heart Brands</a> company &mdash; Loveland, CO</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+  </script>
+
+</body>
+</html>
